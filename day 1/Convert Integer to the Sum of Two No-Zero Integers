@@ -1,0 +1,18 @@
+class Solution {
+    public int[] getNoZeroIntegers(int n) {
+        int a = 1, b = n - 1;
+        while (!noZero(a) || !noZero(b)) {
+            a++;
+            b = n - a;
+        }
+        return new int[]{a, b};
+    }
+
+     boolean noZero(int num) {
+        while (num > 0) {
+            if (num % 10 == 0) return false;
+            num /= 10;
+        }
+        return true;
+    }
+}
