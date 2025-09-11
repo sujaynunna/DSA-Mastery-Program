@@ -1,0 +1,40 @@
+class Solution {
+    public String sortVowels(String s) {
+       
+        char[] vowels = {'A','E','I','O','U','a','e','i','o','u'};
+        int[] freq = new int[10];
+
+       
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case 'A': freq[0]++; break;
+                case 'E': freq[1]++; break;
+                case 'I': freq[2]++; break;
+                case 'O': freq[3]++; break;
+                case 'U': freq[4]++; break;
+                case 'a': freq[5]++; break;
+                case 'e': freq[6]++; break;
+                case 'i': freq[7]++; break;
+                case 'o': freq[8]++; break;
+                case 'u': freq[9]++; break;
+                default: break;
+            }
+        }
+
+     
+        StringBuilder sb = new StringBuilder();
+        int idx = 0; 
+        for (char c : s.toCharArray()) {
+            if ("AEIOUaeiou".indexOf(c) != -1) { 
+                
+                while (idx < 10 && freq[idx] == 0) idx++;
+                sb.append(vowels[idx]);
+                freq[idx]--;
+            } else {
+                sb.append(c);
+            }
+        }
+
+        return sb.toString();
+    }
+}
